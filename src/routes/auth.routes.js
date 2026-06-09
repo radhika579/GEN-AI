@@ -18,6 +18,6 @@ authrouter.post("/register",authController.registerUserController)
  */
 
 
-authRouter.post("/api/login", authController.loginUserController)
+authrouter.post("/login", authController.loginUserController)
 
 module.exports = authrouter

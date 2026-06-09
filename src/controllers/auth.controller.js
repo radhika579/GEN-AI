@@ -1,9 +1,15 @@
 const userModel = require("../models/user.model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const JWT_SECRET = process.env.JWT_SECRET
+
+if (!JWT_SECRET) {
+    throw new Error("JWT_SECRET environment variable is required")
+}
+
 /**
  * @route POST /api/auth/register
- * @description Register a new user,expects username, email and password in the request body
+ * @description Register a new user, expects username, email and password in the request body
  * @access Public
  */
 
@@ -34,16 +40,14 @@ const jwt = require("jsonwebtoken")
                 username,
                 email,
                 password: hash
-    })
+            })
 
             const token = jwt.sign(
                 { userId: User._id }, 
-                process.env.JWT_SECRET, 
+                JWT_SECRET, 
                 { expiresIn: "1d" }
-                
             )
-            res.cookie("token", token) 
-
+            res.cookie("token", token)
 
             res.status(201).json({
                 message: "User registered successfully",
@@ -82,8 +86,8 @@ const jwt = require("jsonwebtoken")
     }
 
     const token = jwt.sign(
-        { userId: user._id , username: user.username},
-        process.env.JWT_SECRET,
+        { userId: user._id, username: user.username },
+        JWT_SECRET,
         { expiresIn: "1d" }
     )
     res.cookie("token", token) 
