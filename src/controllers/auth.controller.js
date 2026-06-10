@@ -2,6 +2,7 @@ const userModel = require("../models/user.model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const JWT_SECRET = process.env.JWT_SECRET
+const tokenBlacklistModel = require("../models/blacklist.model")
 
 if (!JWT_SECRET) {
     throw new Error("JWT_SECRET environment variable is required")
@@ -100,7 +101,23 @@ if (!JWT_SECRET) {
         }
     })
 }
+
+async function logoutUserController(req, res) {
+    const token = req.cookies.token
+
+    if (!token) {
+        await tokenBlacklistModel.create({ token })
+    }
+    
+    res.clearCookie("token")
+
+    res.status(200).json({
+        message: "User logged out successfully"
+    })
+}
+
 module.exports = {
     registerUserController,
-    loginUserController 
+    loginUserController,
+    logoutUserController
 }
