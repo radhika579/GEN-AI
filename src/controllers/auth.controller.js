@@ -67,31 +67,60 @@ if (!JWT_SECRET) {
     *@access Public 
     */
    async function loginUserController(req, res) {
+    if (req.user && req.user.userId) {
+        const { userId, username, email } = req.user
+        const token = jwt.sign(
+            { userId, username, email },
+            JWT_SECRET,
+            { expiresIn: "1d" }
+        )
 
-    const {email, password} = req.body
+        res.cookie("token", token)
+        return res.status(200).json({
+            message: "User already authenticated",
+            user: {
+                id: userId,
+                username,
+                email
+            }
+        })
+    }
 
-    const user = await userModel.findOne({email})
-    if(!user){
+    if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).json({
+            message: "Request body is required"
+        })
+    }
+
+    const { email, password } = req.body
+
+    if (!email || !password) {
+        return res.status(400).json({
+            message: "Please provide email and password"
+        })
+    }
+
+    const user = await userModel.findOne({ email })
+    if (!user) {
         return res.status(400).json({
             message: "Invalid email or password"
         })
     }
 
-
     const isPasswordValid = await bcrypt.compare(password, user.password)
-
-    if(!isPasswordValid){
+    if (!isPasswordValid) {
         return res.status(400).json({
             message: "Invalid email or password"
         })
     }
 
     const token = jwt.sign(
-        { userId: user._id, username: user.username },
+        { userId: user._id, username: user.username, email: user.email },
         JWT_SECRET,
         { expiresIn: "1d" }
     )
-    res.cookie("token", token) 
+
+    res.cookie("token", token)
     res.status(200).json({
         message: "User logged in successfully",
         user: {
@@ -102,10 +131,19 @@ if (!JWT_SECRET) {
     })
 }
 
+/**
+ * 
+ * @name logoutUserController
+ * @description clear token from user cookie and add the token in blacklist
+ * @access public
+ */
+
+
 async function logoutUserController(req, res) {
     const token = req.cookies.token
 
-    if (!token) {
+    if (token) {
+        console.log("Token to be blacklisted:", token)
         await tokenBlacklistModel.create({ token })
     }
     
@@ -116,8 +154,34 @@ async function logoutUserController(req, res) {
     })
 }
 
+
+/**
+ * 
+ * @name getMeController
+ * @description Get the current logged in user details,
+ * @access private
+ * 
+ */
+
+async function getMeController(req, res) {
+    const user = await userModel.findById(req.user.userId)
+
+    res.status(200).json({
+        message: "User details fetched successfully",
+        user: {
+            id: user._id,
+            username: user.username,
+            email: user.email
+        }
+    })
+}
+
+
+
+
 module.exports = {
     registerUserController,
     loginUserController,
-    logoutUserController
+    logoutUserController,
+    getMeController
 }
