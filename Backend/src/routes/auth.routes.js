@@ -18,7 +18,7 @@ authrouter.post("/register",authController.registerUserController)
  */
 
 
-authrouter.post("/login", authMiddleware.authUser,authController.loginUserController)
+authrouter.post("/login", authController.loginUserController)
 
 /**
  * @route GET /api/auth/logout
