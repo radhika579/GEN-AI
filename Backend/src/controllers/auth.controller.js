@@ -57,6 +57,7 @@ if (!JWT_SECRET) {
                     username: User.username,
                     email: User.email
                 },
+                token,
                 
             })
     }
@@ -83,6 +84,7 @@ if (!JWT_SECRET) {
                 username,
                 email
             }
+            , token
         })
     }
 
@@ -128,6 +130,7 @@ if (!JWT_SECRET) {
             username: user.username,
             email: user.email
         }
+        , token
     })
 }
 
