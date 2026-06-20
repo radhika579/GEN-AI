@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import JobDescriptionInput from '../../components/JobDescriptionInput'
 import ProfileSection from '../../components/ProfileSection'
 import GenerateButton from '../../components/GenerateButton'
 import '../../style/home.scss'
+import { useInterview } from '../../hooks/useInterview.js'
 
 const Home = () => {
-    // Local UI state — will move to hook/state layers later
+    const navigate = useNavigate()
+    const { loading, generateReport } = useInterview()
     const [jobDescription, setJobDescription] = useState('')
     const [resumeFile, setResumeFile] = useState(null)
     const [selfDescription, setSelfDescription] = useState('')
@@ -14,9 +17,15 @@ const Home = () => {
     const hasProfile = !!resumeFile || selfDescription.trim().length > 0
     const canGenerate = hasJobDescription && hasProfile
 
-    const handleGenerate = () => {
-        // Placeholder — will be wired to hook layer
-        console.log('Generate clicked', { jobDescription, resumeFile, selfDescription })
+    const handleGenerate = async () => {
+        try {
+            const report = await generateReport({ jobDescription, selfDescription, resumeFile })
+            if (report && report._id) {
+                navigate(`/interview/${report._id}`)
+            }
+        } catch (error) {
+            console.error('Failed to generate report:', error)
+        }
     }
 
     return (
@@ -49,8 +58,8 @@ const Home = () => {
 
                 <GenerateButton
                     onClick={handleGenerate}
-                    disabled={!canGenerate}
-                    loading={false}
+                    disabled={!canGenerate || loading}
+                    loading={loading}
                 />
             </section>
         </main>

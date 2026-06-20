@@ -1,0 +1,165 @@
+{
+  "_id": {
+    "$oid": "6a35451441496f1572ab470a"
+  },
+  "jobDesciption": "Seeking an opportunity as a Software Development Engineer, Full-Stack Developer, or AI/ML Engineer Intern, where I can apply my knowledge of Python, JavaScript, React.js, Node.js, MongoDB, and Generative AI technologies to develop impactful applications. I aim to leverage my experience in building RAG pipelines, AI-driven systems, and full-stack solutions while continuously enhancing my technical and problem-solving skills and contributing to organizational success.",
+  "resume": "Radhika Suri\nAbdul Kalam Technical University\n +9311712191 # suriradhi12@gmail.com ï Radhika-suri § radhika579\nEducation\nAbdul Kalam Technical University 2024 – 2028\nBachelor of Technology in Computer Science and Engineering Lucknow, U.P\nVictoria Girls Senior Secondary School (CBSE) 2022 – 2023\n12th Percentage: 70% Delhi\nVictoria Girls Senior Secondary School (CBSE) 2019 – 2020\n10th Percentage: 85% Delhi\nProjects\nMedical Chatbot | Python, LangChain, HuggingFace, FAISS, Mistral LLM, Streamlit 2026\n• Built an end-to-end RAG (Retrieval-Augmented Generation) pipeline using LangChain and Mistral LLM to\nanswer domain-specific medical queries with contextually accurate, grounded responses.\n• Generated dense vector embeddings from medical PDF documents using HuggingFace sentence-transformers\n(all-MiniLM-L6-v2) and indexed them into a FAISS vector store for fast semantic similarity search.\n• Implemented a custom memory module (create memory for llm.py) to chunk, embed, and persist document\nknowledge, and a retrieval chain (connect memory with llm.py) linking FAISS context to the LLM.\n• Developed an interactive conversational UI using Streamlit, supporting multi-turn dialogue with session-aware chat\nhistory and real-time LLM response streaming.\n• Managed Python dependencies and isolated environment with Pipenv; ingested raw PDFs via PyPDF for\npreprocessing and text extraction into the vector pipeline.\nAI Interview Platform | React.js, Node.js, Express.js, MongoDB, REST API, Gemini AI 2026\n• Built a full-stack AI-powered mock interview web application using React.js (Vite) on the frontend and Node.js\nwith Express.js on the backend following MVC architecture.\n• Integrated Gemini AI API to dynamically generate role-specific interview questions and deliver real-time AI-driven\nfeedback on candidate responses.\n• Designed and implemented RESTful APIs with modular routing, middleware for request validation, and MongoDB\nfor persisting user sessions, interview history, and AI evaluation results.\n• Engineered a dedicated AI service layer (ai.service.js) to abstract LLM integration, enabling clean separation of\nconcerns and scalable prompt engineering.\n• Styled the frontend with SCSS for component-scoped, maintainable CSS; applied React Hooks (useState, useEffect)\nfor state and lifecycle management.\nTechnical Skills\nLanguages: Python, Bash, JavaScript, C++, Java, SQL, YAML, HTML/CSS, SCSS\nWeb Technologies: React.js, Redux, Node.js, Express.js, MongoDB, RESTful APIs, Firebase, Vite, Streamlit\nAI/ML & NLP: LangChain, HuggingFace Transformers, FAISS, RAG, Mistral LLM, Gemini AI API, Prompt Engineering\nData & Vector Stores: FAISS (Vector DB), Sentence Embeddings, PyPDF, Document Ingestion Pipelines\nArchitecture & Patterns: MVC Architecture, RAG Pipeline, Service Layer Design, Middleware, Component-based UI\nOther Tools: Linux, Nginx, VS Code, Postman, ESLint, Git, Pipenv\nCourse Highlights and Positions Of Responsibility\nCourse Work : OOPs with Java, Python Programming, Operating System, Theory of Automata and Formal Language,\nSensor Instruments, Technical Communication, OS PDP, Data Structures, DSTL, COA, Cyber Security, Web Designing\nWorkshop.\nEvents: Participated in Sthapatya, LFR Robot Car, and Tech Designing events at Abdul Kalam Technical\nUniversity. Memberships: Active member of IEEE Society and Women in Engineering (WIE), IEEE.\nCertifications\nAWS Cloud Practitioner – Completed AWS Cloud Computing course from Udemy\n\n-- 1 of 1 --\n\n",
+  "selfDescription": "I am a Computer Science and Engineering undergraduate with a strong interest in Artificial Intelligence, Full-Stack Development, and Generative AI applications. I have hands-on experience building AI-powered solutions using LangChain, Hugging Face, FAISS, Mistral LLM, and Gemini AI, along with developing scalable web applications using React.js, Node.js, Express.js, and MongoDB. I enjoy solving real-world problems, learning new technologies, and creating efficient, user-focused software solutions. I am eager to contribute my technical skills and grow as a software engineer in a collaborative and innovative environment.",
+  "matchScore": 95,
+  "technicalQuestion": [
+    {
+      "question": "Can you explain the core concepts behind Retrieval-Augmented Generation (RAG) and how you implemented it in your Medical Chatbot project?",
+      "intention": "To assess the candidate's understanding of RAG, a key technology mentioned in their project, and their ability to articulate technical concepts.",
+      "answer": "RAG combines retrieval of relevant information from a knowledge base with a generative language model. In my project, I used FAISS to store embeddings of medical documents. When a user asks a question, I first retrieve the most similar document chunks using semantic search on the embeddings. These retrieved chunks are then passed as context to the Mistral LLM along with the user's question, enabling it to generate a more accurate and contextually grounded answer based on the provided medical information."
+    },
+    {
+      "question": "Describe the architecture of your AI Interview Platform. What were the key components and how did they interact?",
+      "intention": "To evaluate the candidate's understanding of full-stack development, API design, and integration of AI services in a web application.",
+      "answer": "The platform follows an MVC architecture. The frontend, built with React.js, handles user interactions and displays information. The backend, developed using Node.js and Express.js, manages business logic and interacts with the database (MongoDB). RESTful APIs connect the frontend and backend. A dedicated AI service layer abstracts the Gemini AI integration, handling prompt engineering and response processing. User data, interview history, and AI evaluations are stored in MongoDB. The Gemini API is called via the AI service layer to generate questions and provide feedback."
+    },
+    {
+      "question": "You mentioned using HuggingFace sentence-transformers (all-MiniLM-L6-v2). What are sentence embeddings, and why are they important for semantic search in your RAG pipeline?",
+      "intention": "To gauge the candidate's understanding of NLP fundamentals and how specific tools contribute to the functionality of their AI projects.",
+      "answer": "Sentence embeddings are dense vector representations of sentences or text snippets that capture their semantic meaning. Models like all-MiniLM-L6-v2 are trained to produce embeddings such that sentences with similar meanings have similar vector representations (i.e., they are close in the vector space). In the RAG pipeline, these embeddings allow us to perform semantic similarity search. Instead of just keyword matching, we can find document chunks that are conceptually related to the user's query, leading to more relevant retrieved information."
+    },
+    {
+      "question": "How did you handle state management in your React.js frontend for the AI Interview Platform?",
+      "intention": "To understand the candidate's proficiency in modern frontend development practices, specifically React hooks and state management.",
+      "answer": "I primarily used React Hooks like `useState` for managing local component state and `useEffect` for handling side effects, such as fetching data from the backend. For more complex state management scenarios across multiple components, I would consider using Context API or a state management library like Redux, although for this project, `useState` and prop drilling were sufficient for most cases. `useState` was crucial for managing form inputs, user session details, and the state of the interview process."
+    },
+    {
+      "question": "Can you explain the role of middleware in your Express.js backend for the AI Interview Platform?",
+      "intention": "To assess the candidate's knowledge of backend development concepts and best practices in Node.js/Express.js.",
+      "answer": "Middleware in Express.js functions as a series of functions that have access to the request object (`req`), the response object (`res`), and the next middleware function in the application’s request-response cycle. In my project, I used middleware for tasks like request validation (e.g., checking if required fields are present in a POST request), authentication and authorization (ensuring only logged-in users can access certain endpoints), logging requests, and handling CORS. It helps in organizing the code and separating cross-cutting concerns."
+    }
+  ],
+  "behavioralQuestion": [
+    {
+      "question": "Tell me about a challenging technical problem you faced in one of your projects and how you overcame it.",
+      "intention": "To understand the candidate's problem-solving skills, resilience, and approach to debugging and overcoming obstacles.",
+      "answer": "In the Medical Chatbot project, a significant challenge was optimizing the retrieval accuracy of the RAG pipeline. Initially, the LLM sometimes provided answers not well-supported by the retrieved context. To address this, I experimented with different chunking strategies for the documents, fine-tuned the prompt engineering to better instruct the LLM on how to use the provided context, and explored alternative embedding models. By iteratively testing and refining these components, I managed to significantly improve the relevance and accuracy of the generated responses."
+    },
+    {
+      "question": "Describe a situation where you had to learn a new technology quickly for a project. How did you approach it?",
+      "intention": "To assess the candidate's learning agility, initiative, and ability to adapt to new technologies, which is crucial in a fast-paced tech environment.",
+      "answer": "When starting the AI Interview Platform project, I needed to integrate the Gemini AI API, which was relatively new to me. I started by thoroughly reading the official documentation and exploring example code provided by Google. I then broke down the integration into smaller, manageable parts: setting up API keys, understanding the request/response formats, and then implementing the core functionality of question generation and feedback analysis. I also looked at community forums and tutorials for practical insights. This structured approach allowed me to quickly become proficient and integrate the API effectively."
+    },
+    {
+      "question": "How do you stay updated with the latest trends and advancements in AI and Full-Stack Development?",
+      "intention": "To gauge the candidate's passion for technology and their commitment to continuous learning and professional development.",
+      "answer": "I actively follow reputable tech blogs (like Towards Data Science, Hacker News), subscribe to newsletters from AI research labs and frameworks (e.g., OpenAI, LangChain), and participate in online communities like Stack Overflow and relevant Discord/Slack channels. I also periodically take online courses on platforms like Udemy or Coursera for deeper dives into specific technologies. Experimenting with new tools and libraries through personal projects is also a key part of my learning process."
+    },
+    {
+      "question": "Tell me about a time you had to collaborate with others on a project. What was your role, and how did you ensure effective teamwork?",
+      "intention": "To evaluate the candidate's teamwork, communication, and collaboration skills.",
+      "answer": "Although my listed projects are individual, in academic group projects during university, I always focused on clear communication and defined roles. For instance, in a group project for an Operating Systems course, I took ownership of implementing the process scheduling algorithms, ensuring my part was well-documented and integrated seamlessly with others' work on memory management. I actively participated in daily stand-ups (even informal ones) to sync progress, identify blockers, and offer help where needed, fostering a collaborative environment."
+    }
+  ],
+  "skillGaps": [
+    {
+      "skill": "Advanced Cloud Computing (beyond Practitioner level)",
+      "Severity": "low"
+    },
+    {
+      "skill": "Database performance tuning (beyond basic MongoDB usage)",
+      "Severity": "low"
+    },
+    {
+      "skill": "DevOps and CI/CD implementation",
+      "Severity": "medium"
+    }
+  ],
+  "preparationPlan": [
+    {
+      "day": 1,
+      "focus": "System Design Fundamentals",
+      "tasks": [
+        "Read introductory materials on System Design principles (scalability, availability, consistency).",
+        "Watch introductory videos on common system design interview patterns.",
+        "Review basic concepts of load balancing and caching."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab470b"
+      }
+    },
+    {
+      "day": 2,
+      "focus": "Data Structures & Algorithms (DSA), Python",
+      "tasks": [
+        "Practice problems on arrays and linked lists on LeetCode/HackerRank.",
+        "Review Python's dictionary and set implementations.",
+        "Understand time and space complexity analysis for basic algorithms."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab470c"
+      }
+    },
+    {
+      "day": 3,
+      "focus": "Web Technologies, Node.js/Express.js",
+      "tasks": [
+        "Deep dive into Express.js middleware concepts and practical examples.",
+        "Practice building simple RESTful APIs with Express.js.",
+        "Review concepts of asynchronous programming in Node.js (Promises, async/await)."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab470d"
+      }
+    },
+    {
+      "day": 4,
+      "focus": "AI/ML Concepts, Generative AI",
+      "tasks": [
+        "Revisit the fundamentals of RAG: retrieval, generation, and embeddings.",
+        "Explore different prompt engineering techniques.",
+        "Understand the basics of LLM evaluation metrics."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab470e"
+      }
+    },
+    {
+      "day": 5,
+      "focus": "System Design Practice, Behavioral Questions",
+      "tasks": [
+        "Work through a common system design problem (e.g., designing Twitter feed).",
+        "Practice answering behavioral questions using the STAR method.",
+        "Prepare specific examples from projects to illustrate skills."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab470f"
+      }
+    },
+    {
+      "day": 6,
+      "focus": "DSA, JavaScript/React.js",
+      "tasks": [
+        "Practice problems on trees and graphs.",
+        "Review React Hooks (`useState`, `useEffect`, `useContext`) and their use cases.",
+        "Understand component lifecycle in React."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab4710"
+      }
+    },
+    {
+      "day": 7,
+      "focus": "Mock Interview, Review",
+      "tasks": [
+        "Conduct a mock technical interview focusing on covered topics.",
+        "Conduct a mock behavioral interview.",
+        "Review weak areas identified during practice and mock interviews."
+      ],
+      "_id": {
+        "$oid": "6a35451441496f1572ab4711"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-06-19T13:33:08.394Z"
+  },
+  "updatedAt": {
+    "$date": "2026-06-19T13:33:08.394Z"
+  },
+  "__v": 0
+}
